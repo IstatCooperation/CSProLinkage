@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    
+    <head th:replace="layout :: site-head" />
+    <head>
+        <link th:href="@{/css/table/datatables.css}" rel="stylesheet" />
+        <script th:src="@{/js/table/datatables.js}" type="text/javascript"></script>
+        <script th:src="@{/js/linkage/linkedIndiv.js}" type="text/javascript"></script>
+        <script th:src="@{/js/linkage/HouseHoldLink.js}" type="text/javascript"></script>
+    </head>
+
+    <body>
+
+        <div class="wrapper">
+            <header th:replace="layout :: site-header" />
+            <aside th:replace="layout :: site-aside" />
+
+            <section>
+                <div class="content-wrapper">
+                    <div class="content-heading">
+                        Linked Individuals
+                        <small>E.A. <span th:text="${session.appStatus.selEaCod}" th:unless="${session == null}"> . </span></small>
+                    </div>
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <div class="panel-title pull-left">Linked Individuals (A=PES; B=CENS)</div>                               
+                            <div class="panel-title pull-right">
+                                <!--<a title="Step 1" th:href="@{/step1}">
+                                    <span>Step 1</span>&nbsp;
+                                    <i class="fa fa-step-forward"></i>
+                                </a>-->
+                            </div>                                
+                        </div>
+                        <br/>
+                        <div class="panel-body">
+                            <table id="linkedIndivTab" class="table table-striped" cellspacing="0" width="100%">
+                                <thead>
+                                    <tr>
+                                        <th>ID A</th>
+                                        <th>IDQ A</th>
+                                        <th>Name1 A</th>
+                                        <th>Name2 A</th>
+                                        <th>Name3 A</th>
+                                        <th>ID B</th>
+                                        <th>IDQ B</th>                                        
+                                        <th>Name1 B</th>
+                                        <th>Name2 B</th>
+                                        <th>Name3 B</th>                                        
+                                        <th>EA Cod</th>
+                                        <th>Step</th>
+                                        <th>&nbsp;</th>
+                                        <th>&nbsp;</th>
+                                        <th>&nbsp;</th>
+                                    </tr>
+                                </thead>                          
+                            </table>
+                        </div>
+                    </div>                    
+                </div>                                
+            </section>       
+
+            <div th:replace="linkage/hhLinked :: hhLinkedPanel"></div>            
+            <div th:replace="linkage/hhLinkage :: hhLinkPanel"></div>            
+            
+            <div class="modal fade" id="modalDeleteConfirm" role="dialog">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">Remove link</div>
+
+                        <div class="modal-body">
+                            <h2>Remove link between</h2>
+                            <h4 id='titleDelIndivA' class="modal-title">ID Individual A</h4>
+                            <h4 id='titleDelIndivB' class="modal-title">ID Individual B</h4>                  
+                            <div class="modal-footer">
+                                <span class="btn btn-primary" onclick="delLinkedIndividuals()">
+                                    <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                    &nbsp;Remove link
+                                </span>                                
+                                <button type="button" id="btnDeleteClose" class="btn btn-danger"
+                                        data-dismiss="modal" onclick="close()">Close</button>                                    
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+            </div>
+            <footer th:replace="layout :: site-footer" />
+        </div>                   
+    </body>
+</html>
+

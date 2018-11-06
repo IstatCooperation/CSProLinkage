@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    
+    <head th:replace="layout :: site-head" />
+    <head>
+        <link th:href="@{/css/table/datatables.css}" rel="stylesheet" />
+        <script th:src="@{/js/table/datatables.js}" type="text/javascript"></script>
+        <script th:src="@{/js/linkage/linkageStep3.js}" type="text/javascript"></script>
+        <script th:src="@{/js/linkage/HouseHoldLink.js}" type="text/javascript"></script>        
+    </head>
+
+    <body>
+
+        <div class="wrapper">
+            <header th:replace="layout :: site-header" />
+            <aside th:replace="layout :: site-aside" />
+
+            <section>
+                <div class="content-wrapper">
+                    <div class="content-heading">
+                        Step 3
+                        <small>E.A. <span th:text="${session.appStatus.selEaCod}" th:unless="${session == null}"> . </span></small>
+                    </div>
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <div class="panel-title pull-left">
+                                <a title="Refresh" th:href="@{/initStep3}">                                
+                                    <i class="fa fa-refresh"></i>                                
+                                </a>                                    
+                                &nbsp;&nbsp;Step 3 - Linkage by normalized names and all the other original variables excluding 'AGE' (with Sticker ID)
+                            </div>
+                            <div class="panel-title pull-right">
+                                <a title="Step 2" th:href="@{/step2}">
+                                    <i class="fa fa-step-backward"></i>                                    
+                                    <span>Step 2</span>&nbsp;                                                                                                            
+                                </a>                         
+                                &nbsp;|&nbsp;
+                                <a title="Step 4" th:href="@{/step4}">
+                                    <span>Step 4</span>&nbsp;                                    
+                                    <i class="fa fa-step-forward"></i>                                    
+                                </a>
+                            </div>                     
+                        </div>                        
+                        <br/>
+                        <div class="panel-body">
+                            <table id="tabStep" class="table table-striped" cellspacing="0" width="100%">
+                                <thead>
+                                    <tr>
+                                        <th>ID A</th>
+                                        <th>Name A</th>
+                                        <th>Age A</th>
+                                        <th>ID B</th>
+                                        <th>Name B</th>
+                                        <th>Age B</th>                                        
+                                        <th>Sex</th>
+                                        <th>Religion</th>
+                                        <th>Relat</th>
+                                        <th>Grade</th>
+                                        <th>Ethnic</th>
+                                        <th>Marital</th>
+                                        <th>Cod EA</th>
+                                        <th>&nbsp;</th>
+                                        <th>&nbsp;</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <div th:replace="linkage/hhLinked :: hhLinkedPanel"></div>                        
+            <div th:replace="linkage/hhLinkage :: hhLinkPanel"></div>
+            
+            <footer th:replace="layout :: site-footer" />
+
+        </div>
+
+    </body>
+</html>
+

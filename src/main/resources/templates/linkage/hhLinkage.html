@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="layout :: site-head"/>
+    <body>
+        <!-- Body -->    
+        <div class="wrapper">
+            <header th:replace="layout :: site-header" />
+            <aside th:replace="layout :: site-aside" />
+            <div th:fragment="hhLinkPanel" th:remove="tag">
+                <div class="modal fade" id="modalFamilies_form" role="dialog">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">Families</div>
+                            <span id='currStepID'></span>
+                            <div class="modal-body">
+                                <h4 id='titleTabA' class="modal-title">Family IDQ PES</h4>
+                                <table id="tabFamilyA" class="table table-striped" cellspacing="0" width="100%">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Name</th>
+                                            <th>Age</th>                                      
+                                            <th>Sex</th>
+                                            <th>Relig</th>
+                                            <th>Relat</th>
+                                            <th>Grade</th>
+                                            <th>Ethnic</th>
+                                            <th>Marit</th>
+                                            <th>&nbsp;</th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                                <h4 id='titleTabB' class="modal-title">Family IDQ CENS</h4>                        
+                                <table id="tabFamilyB" class="table table-striped" cellspacing="0" width="100%">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Name</th>
+                                            <th>Age</th>                                      
+                                            <th>Sex</th>
+                                            <th>Relig</th>
+                                            <th>Relat</th>
+                                            <th>Grade</th>
+                                            <th>Ethnic</th>
+                                            <th>Marit</th>
+                                            <th>&nbsp;</th>
+                                        </tr>
+                                    </thead>
+                                </table> 
+                                <div class="modal-footer">
+                                    <span class="btn btn-primary" onclick="effettuaLink()">
+                                        <i class="fa fa-link" aria-hidden="true"></i>
+                                        &nbsp;Link Individuals
+                                    </span>
+                                    <button type="button" id="btnDeleteClose" class="btn btn-danger"
+                                            data-dismiss="modal" onclick="closeHHLinkage()">Close</button>                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+            </div>            
+            
+            <footer th:replace="layout :: site-footer" />
+        </div><!-- wrapper -->
+    </body>
+</html>
+

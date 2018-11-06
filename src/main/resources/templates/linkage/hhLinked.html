@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="layout :: site-head"/>
+    <body>
+        <!-- Body -->    
+        <div class="wrapper">
+            <header th:replace="layout :: site-header" />
+            <aside th:replace="layout :: site-aside" />
+            
+            <div th:fragment="hhLinkedPanel" th:remove="tag">
+                <div class="modal fade" id="modalLinkedFamilies_form" role="dialog">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">Linked Individuals</div>
+
+                            <div class="modal-body">
+                                <h4 id='titleQuestA' class="modal-title">HouseHold IDQ PES</h4>
+                                <h4 id='titleQuestB' class="modal-title">HouseHold IDQ CENS</h4>                             
+                                <table id="tabLinkedInd" class="table table-striped" cellspacing="0" width="100%">
+                                    <thead>
+                                        <tr>
+                                            <th>ID A</th>
+                                            <th>Name A</th>                                            
+                                            <th>Age A</th> 
+                                            <th>Sex A</th>                                             
+                                            <th>ID B</th>
+                                            <th>Name B</th>                                            
+                                            <th>Age B</th> 
+                                            <th>Sex B</th>                                             
+                                            <th>Step</th>
+                                        </tr>
+                                    </thead>
+                                </table>                            
+                                <div class="modal-footer">
+                                    <button type="button" id="btnDeleteClose" class="btn btn-danger"
+                                            data-dismiss="modal" onclick="close()">Close</button>                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+            </div>            
+            
+            <footer th:replace="layout :: site-footer" />
+        </div><!-- wrapper -->
+    </body>
+</html>
+
